@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Vit T-shirt",
+    "description": "Klassisk vit t-shirt i mjuk bomull.",
+    "price": 199,
+    "size": "M",
+    "fit": "regular",
+    "image": "https://placehold.co/400x400?text=Vit+T-shirt"
+  },
+  {
+    "id": 2,
+    "name": "Sneakers",
+    "description": "Bekväma sneakers för vardag och fritid.",
+    "price": 799,
+    "size": "L",
+    "fit": "regular",
+    "image": "https://placehold.co/400x400?text=Sneakers"
+  },
+  {
+    "id": 3,
+    "name": "Jacka",
+    "description": "Stilren jacka för svala kvällar.",
+    "price": 1299,
+    "size": "S",
+    "fit": "slim",
+    "image": "https://placehold.co/400x400?text=Jacka"
+  },
+  {
+    "id": 4,
+    "name": "Jeans",
+    "description": "Blå jeans med klassisk passform.",
+    "price": 599,
+    "size": "M",
+    "fit": "regular",
+    "image": "https://placehold.co/400x400?text=Jeans"
+  }
+]
