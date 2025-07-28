@@ -1,4 +1,3 @@
-
 [
   {
     "id": "1",
@@ -7,7 +6,9 @@
     "size": ["S", "M", "L"],
     "color": "black",
     "category": "tshirt",
-    "image": "/tshirt.png"
+    "image": "/tshirt.png",
+    "description": "En basic t-shirt i mjuk bomull.",
+    "fit": "regular"
   },
   {
     "id": "2",
@@ -16,6 +17,8 @@
     "size": ["M", "L"],
     "color": "blue",
     "category": "jeans",
-    "image": "/jeans.png"
+    "image": "/jeans.png",
+    "description": "Slim fit jeans i denim.",
+    "fit": "slim"
   }
 ]
