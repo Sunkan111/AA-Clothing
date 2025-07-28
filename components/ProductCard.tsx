@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useCart } from '../contexts/CartContext';
 
 export type Product = {
   id: number;
@@ -11,8 +12,9 @@ export type Product = {
 };
 
 export default function ProductCard({ product }: { product: Product }) {
+  const { addToCart } = useCart();
   return (
-    <div className="border rounded-md overflow-hidden bg-white shadow-sm">
+    <div className="border rounded-md overflow-hidden bg-white shadow-sm flex flex-col">
       {/* Note: width and height are required for next/image. Adjust as necessary. */}
       <Image
         src={product.image}
@@ -21,10 +23,16 @@ export default function ProductCard({ product }: { product: Product }) {
         height={300}
         className="object-cover w-full h-48"
       />
-      <div className="p-2">
+      <div className="p-2 flex-1 flex flex-col">
         <h3 className="font-semibold text-sm md:text-base">{product.name}</h3>
-        <p className="text-xs md:text-sm text-gray-600">{product.description}</p>
-        <p className="font-bold mt-1">{product.price} kr</p>
+        <p className="text-xs md:text-sm text-gray-600 flex-grow">{product.description}</p>
+        <p className="font-bold mt-1">{product.price} kr</p>
+        <button
+          className="mt-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1 rounded"
+          onClick={() => addToCart(product)}
+        >
+          Lägg i varukorgen
+        </button>
       </div>
     </div>
   );
