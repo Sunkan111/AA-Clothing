@@ -1,57 +1,84 @@
+import { useState, useEffect } from 'react';
+import Layout from '../components/Layout';
+import FilterSidebar from '../components/FilterSidebar';
+import ProductCard from '../components/ProductCard';
 
-import { useEffect, useState } from "react";
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  size: string[];
+  fit: string;
+  image: string;
+  // Additional fields such as color or category can be added as needed
+}
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
-  const [filter, setFilter] = useState({ size: "", color: "", price: 0 });
+  const [products, setProducts] = useState<Product[]>([]);
+  const [search, setSearch] = useState('');
+  const [filters, setFilters] = useState<{ size: string | null; fit: string | null }>({
+    size: null,
+    fit: null,
+  });
+  const [sort, setSort] = useState('');
 
   useEffect(() => {
-    fetch("/data/products.json")
+    // Load product data from the JSON file in the data directory
+    fetch('/data/products.json')
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data: Product[]) => setProducts(data));
   }, []);
 
-  const filtered = products.filter((p) =>
-    (!filter.size || p.size.includes(filter.size)) &&
-    (!filter.color || p.color === filter.color) &&
-    (!filter.price || p.price <= filter.price)
-  );
+  const handleSearch = (query: string) => {
+    setSearch(query);
+  };
+
+  const handleFilterChange = (newFilters: { size: string | null; fit: string | null }) => {
+    setFilters(newFilters);
+  };
+
+  const handleSortChange = (value: string) => {
+    setSort(value);
+  };
+
+  // Apply search and filters to products
+  const filtered = products.filter((product) => {
+    const matchesSearch =
+      product.name.toLowerCase().includes(search.toLowerCase()) ||
+      product.description.toLowerCase().includes(search.toLowerCase());
+    const matchesSize = !filters.size || product.size.includes(filters.size);
+    const matchesFit = !filters.fit || product.fit === filters.fit;
+    return matchesSearch && matchesSize && matchesFit;
+  });
+
+  // Sort the filtered products by price
+  const sorted = [...filtered].sort((a, b) => {
+    if (sort === 'asc') return a.price - b.price;
+    if (sort === 'desc') return b.price - a.price;
+    return 0;
+  });
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>AA-Clothing</h1>
-      <div>
-        <label>Storlek:</label>
-        <select onChange={(e) => setFilter({ ...filter, size: e.target.value })}>
-          <option value="">Alla</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-        </select>
+    <Layout search={search} onSearch={handleSearch}>
+      <div className="flex flex-col md:flex-row">
+        {/* Sidebar for filters and sorting */}
+        <aside className="w-full md:w-1/4 mb-4 md:mb-0 md:mr-4">
+          <FilterSidebar
+            filters={filters}
+            onFilterChange={handleFilterChange}
+            sort={sort}
+            onSortChange={handleSortChange}
+          />
+        </aside>
 
-        <label>Färg:</label>
-        <select onChange={(e) => setFilter({ ...filter, color: e.target.value })}>
-          <option value="">Alla</option>
-          <option value="black">Svart</option>
-          <option value="blue">Blå</option>
-        </select>
-
-        <label>Maxpris:</label>
-        <input
-          type="number"
-          onChange={(e) => setFilter({ ...filter, price: parseInt(e.target.value) })}
-        />
+        {/* Product grid */}
+        <main className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {sorted.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </main>
       </div>
-
-      <div>
-        {filtered.map((product) => (
-          <div key={product.id} style={{ marginTop: "1rem" }}>
-            <img src={product.image} alt={product.name} width="100" />
-            <h3>{product.name}</h3>
-            <p>{product.price} kr</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    </Layout>
   );
 }
