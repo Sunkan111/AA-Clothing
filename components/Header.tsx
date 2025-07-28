@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useCart } from '../contexts/CartContext';
 
 interface HeaderProps {
   /**
@@ -23,27 +24,29 @@ interface HeaderProps {
 
 /**
  * The header component renders a top navigation bar with the site logo,
- * category links, a search box and login/logout controls. Tailwind classes
- * ensure the layout is responsive and aesthetically pleasing.
+ * category links, a search box, login/logout controls and a cart link.
+ * Tailwind classes ensure the layout is responsive and aesthetically
+ * pleasing.
  */
-export default function Header({
-  search,
-  onSearch,
-  isLoggedIn,
-  onLogout,
-}: HeaderProps) {
+export default function Header({ search, onSearch, isLoggedIn, onLogout }: HeaderProps) {
   const [query, setQuery] = useState(search);
+  const { items } = useCart();
+
+  // Derive total number of items in the cart
+  const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   // Synchronise local query state with the prop whenever the search prop changes.
-  // This ensures controlled updates from the parent component.
-  if (query !== search) {
-    setQuery(search);
-  }
+  useEffect(() => {
+    if (query !== search) {
+      setQuery(search);
+    }
+  }, [search]);
 
   return (
     <header className="bg-white shadow mb-4">
       <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0">
-        <div className="flex items-center space-x-4 w-full md:w-auto">
+        {/* Site logo */}
+        <div className="flex items-center space-x-2 md:space-x-4 w-full md:w-auto">
           <Link href="/" className="font-bold text-xl whitespace-nowrap">
             AA Clothing
           </Link>
@@ -59,6 +62,8 @@ export default function Header({
             </Link>
           </nav>
         </div>
+
+        {/* Search and user/cart controls */}
         <div className="flex items-center space-x-4 w-full md:w-auto">
           <input
             type="search"
@@ -68,8 +73,19 @@ export default function Header({
               onSearch(e.target.value);
             }}
             placeholder="Sök..."
-            className="w-full md:w-64 border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring focus:border-blue-300"
+            className="w-full md:w-64 border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+
+          {/* Cart link with item count */}
+          <Link href="/cart" className="relative text-sm text-gray-700 hover:text-black">
+            <span className="mr-1">Varukorg</span>
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-2 bg-blue-600 text-white text-xs rounded-full px-1">
+                {itemCount}
+              </span>
+            )}
+          </Link>
+
           {isLoggedIn ? (
             <button
               onClick={onLogout}
