@@ -37,10 +37,21 @@ export default function Home() {
   const [sort, setSort] = useState('');
 
   useEffect(() => {
-    // Load product data from the JSON file in the data directory
-    fetch('/data/products.json')
-      .then((res) => res.json())
-      .then((data: Product[]) => setProducts(data));
+    /**
+     * Load product data dynamically. Instead of fetching from "/data/products.json" on
+     * the client (which isn't exposed via Next.js by default), we import the
+     * JSON module. The import returns a module with a `default` export in
+     * CommonJS environments. If that isn't present we fall back to the module
+     * itself. Any errors are logged to the console.
+     */
+    import('../data/products.json')
+      .then((module) => {
+        const data: Product[] = (module as any).default || module;
+        setProducts(data);
+      })
+      .catch((err) => {
+        console.error('Failed to load products', err);
+      });
   }, []);
 
   const handleSearch = (query: string) => {
