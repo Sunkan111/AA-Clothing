@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import FilterSidebar from '../components/FilterSidebar';
 import ProductCard from '../components/ProductCard';
+import Hero from '../components/Hero';
 
 interface Product {
   id: string;
@@ -11,15 +12,27 @@ interface Product {
   size: string[];
   fit: string;
   image: string;
-  // Additional fields such as color or category can be added as needed
+  category: string;
 }
 
+/**
+ * Home page for the AA Clothing shop. Displays a hero banner, a filterable and
+ * sortable product grid and uses the Layout component to provide the site
+ * header with search. Products are loaded from a static JSON file in the
+ * data directory. The page supports filtering by size, fit and category
+ * through the FilterSidebar component and sorting by price.
+ */
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [search, setSearch] = useState('');
-  const [filters, setFilters] = useState<{ size: string | null; fit: string | null }>({
+  const [filters, setFilters] = useState<{
+    size: string | null;
+    fit: string | null;
+    category: string | null;
+  }>({
     size: null,
     fit: null,
+    category: null,
   });
   const [sort, setSort] = useState('');
 
@@ -34,7 +47,11 @@ export default function Home() {
     setSearch(query);
   };
 
-  const handleFilterChange = (newFilters: { size: string | null; fit: string | null }) => {
+  const handleFilterChange = (newFilters: {
+    size: string | null;
+    fit: string | null;
+    category: string | null;
+  }) => {
     setFilters(newFilters);
   };
 
@@ -49,7 +66,9 @@ export default function Home() {
       product.description.toLowerCase().includes(search.toLowerCase());
     const matchesSize = !filters.size || product.size.includes(filters.size);
     const matchesFit = !filters.fit || product.fit === filters.fit;
-    return matchesSearch && matchesSize && matchesFit;
+    const matchesCategory =
+      !filters.category || product.category === filters.category;
+    return matchesSearch && matchesSize && matchesFit && matchesCategory;
   });
 
   // Sort the filtered products by price
@@ -61,7 +80,9 @@ export default function Home() {
 
   return (
     <Layout search={search} onSearch={handleSearch}>
-      <div className="flex flex-col md:flex-row">
+      {/* Hero section introducing the brand */}
+      <Hero />
+      <div id="produkter" className="flex flex-col md:flex-row">
         {/* Sidebar for filters and sorting */}
         <aside className="w-full md:w-1/4 mb-4 md:mb-0 md:mr-4">
           <FilterSidebar
@@ -77,6 +98,9 @@ export default function Home() {
           {sorted.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
+          {sorted.length === 0 && (
+            <p>Inga produkter matchar dina filter.</p>
+          )}
         </main>
       </div>
     </Layout>
