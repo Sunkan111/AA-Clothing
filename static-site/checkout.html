@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kassa – AA Clothing</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo"><a href="index.html" style="color: white; text-decoration: none;">AA Clothing</a></div>
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Sök produkter..."
+          autocomplete="off"
+        />
+        <ul id="searchSuggestions" class="suggestions"></ul>
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="help.html">Hjälp & FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="account-links">
+        <a href="wishlist.html" title="Favoriter" class="icon-link">❤</a>
+        <a href="cart.html" title="Varukorg" class="icon-link">🛒</a>
+        <a href="account.html" title="Mitt konto" class="icon-link">👤</a>
+      </div>
+    </header>
+
+    <main class="checkout-page">
+      <div class="container">
+        <h1>Kassa</h1>
+        <form id="checkoutForm">
+          <fieldset>
+            <legend>Kundinformation</legend>
+            <label>
+              Namn
+              <input type="text" id="name" required />
+            </label>
+            <label>
+              E-post
+              <input type="email" id="email" required />
+            </label>
+            <label>
+              Telefon
+              <input type="tel" id="phone" required />
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Adress</legend>
+            <label>
+              Gatuadress
+              <input type="text" id="street" required />
+            </label>
+            <label>
+              Postnummer
+              <input type="text" id="zip" required />
+            </label>
+            <label>
+              Stad
+              <input type="text" id="city" required />
+            </label>
+            <label>
+              Land
+              <input type="text" id="country" value="Sverige" required />
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Betalning</legend>
+            <label>
+              Betalningsmetod
+              <select id="paymentMethod" required>
+                <option value="card">Kort (Visa/Mastercard)</option>
+                <option value="invoice">Faktura</option>
+                <option value="swish">Swish</option>
+              </select>
+            </label>
+            <div id="invoiceInfo" style="display: none; margin-top: 10px;">
+              <p>Du får din faktura via e-post efter leverans.</p>
+            </div>
+          </fieldset>
+          <button type="submit" id="placeOrderBtn">Slutför köp</button>
+        </form>
+        <p id="checkoutMessage" class="message"></p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-col">
+        <h3>Kundservice</h3>
+        <ul>
+          <li><a href="help.html">Hjälp & FAQ</a></li>
+          <li><a href="returns.html">Retur och byten</a></li>
+          <li><a href="shipping.html">Frakt & leverans</a></li>
+          <li><a href="payment.html">Betalningsalternativ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Om oss</h3>
+        <ul>
+          <li><a href="about.html">Vårt företag</a></li>
+          <li><a href="sustainability.html">Hållbarhet</a></li>
+          <li><a href="careers.html">Karriär</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Följ oss</h3>
+        <ul class="social-links">
+          <li><a href="#" aria-label="Instagram">📷 Instagram</a></li>
+          <li><a href="#" aria-label="Facebook">👍 Facebook</a></li>
+          <li><a href="#" aria-label="TikTok">🎵 TikTok</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Ladda ned vår app</h3>
+        <p>Snart kommer våra appar för iOS och Android.</p>
+      </div>
+    </footer>
+
+    <script src="data/products.js"></script>
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+  </body>
+</html>
