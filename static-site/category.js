@@ -127,21 +127,92 @@ document.addEventListener('DOMContentLoaded', () => {
       // Favorite knappen
       const favBtn = document.createElement('button');
       favBtn.className = 'favorite-button';
-      const favs = getFavorites();
-      if (favs.includes(product.id)) {
+      const favsList = getFavorites();
+      if (favsList.includes(product.id)) {
         favBtn.classList.add('active');
       }
-      favBtn.innerHTML = favBtn.classList.contains('active') ? '❤' : 'ᾐd';
+      favBtn.innerHTML = favBtn.classList.contains('active') ? '❤' : '🤍';
       favBtn.addEventListener('click', (e) => {
         e.preventDefault();
         toggleFavorite(product.id);
         const isActive = favBtn.classList.toggle('active');
-        favBtn.innerHTML = isActive ? '❤' : 'ᾐd';
+        favBtn.innerHTML = isActive ? '❤' : '🤍';
       });
       card.appendChild(favBtn);
+      // Quick view button
+      const qvBtn = document.createElement('button');
+      qvBtn.className = 'quick-view-btn';
+      qvBtn.textContent = 'Snabbvy';
+      qvBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showQuickView(product);
+      });
+      card.appendChild(qvBtn);
       productList.appendChild(card);
     });
   }
+
+  // Quick view functionality
+  const overlay = document.getElementById('quickViewOverlay');
+  const modal = document.getElementById('quickViewModal');
+  const closeBtn = modal.querySelector('.quick-view-close');
+
+  function showQuickView(product) {
+    // Clear previous content
+    modal.querySelectorAll('.modal-content').forEach((el) => el.remove());
+    const content = document.createElement('div');
+    content.className = 'modal-content';
+    // Image
+    const img = document.createElement('img');
+    img.src = product.images[0];
+    img.alt = product.name;
+    content.appendChild(img);
+    // Name and price
+    const name = document.createElement('h3');
+    name.textContent = product.name;
+    content.appendChild(name);
+    const price = document.createElement('p');
+    price.className = 'price';
+    price.textContent = `${product.price} kr`;
+    content.appendChild(price);
+    // Short description
+    const desc = document.createElement('p');
+    desc.textContent = product.description;
+    content.appendChild(desc);
+    // Add to cart button
+    const addBtn = document.createElement('button');
+    addBtn.className = 'add-cart-modal';
+    addBtn.textContent = 'Lägg i varukorg';
+    addBtn.addEventListener('click', () => {
+      // default to first size
+      const size = product.sizes[0];
+      addToCart(product.id, size, 1);
+      addBtn.textContent = 'Tillagd!';
+      setTimeout(() => {
+        addBtn.textContent = 'Lägg i varukorg';
+      }, 1500);
+    });
+    content.appendChild(addBtn);
+    // Link to product page
+    const link = document.createElement('a');
+    link.href = `product.html?id=${product.id}`;
+    link.textContent = 'Se detaljer';
+    link.style.display = 'inline-block';
+    link.style.marginTop = '10px';
+    link.style.color = 'var(--accent)';
+    content.appendChild(link);
+    modal.appendChild(content);
+    overlay.classList.add('active');
+  }
+
+  closeBtn.addEventListener('click', () => {
+    overlay.classList.remove('active');
+  });
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove('active');
+    }
+  });
 
   // Eventlyssnare för filter och sortering
   brandFilter.addEventListener('change', applyFilters);
