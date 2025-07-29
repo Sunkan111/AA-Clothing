@@ -51,13 +51,14 @@ export default function Header({ search, onSearch, isLoggedIn, onLogout }: Heade
             AA Clothing
           </Link>
           <nav className="hidden md:flex space-x-4 text-gray-600 text-sm">
-            <Link href="#" className="hover:text-black">
+            {/* Category links now point to dedicated pages */}
+            <Link href="/dam" className="hover:text-black">
               Dam
             </Link>
-            <Link href="#" className="hover:text-black">
+            <Link href="/herr" className="hover:text-black">
               Herr
             </Link>
-            <Link href="#" className="hover:text-black">
+            <Link href="/barn" className="hover:text-black">
               Barn
             </Link>
           </nav>
