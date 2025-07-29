@@ -447,6 +447,97 @@
     "category": "barn",
     "image": "/tshirt.png",
     "description": "Pyjamas Barn för barn.",
+    "fit": "regular",
+  {
+    "id": "herr-logo-black",
+    "name": "AA Studios T-shirt (Svart)",
+    "price": 299,
+    "size": ["S","M","L","XL"],
+    "color": "Svart",
+    "category": "herr",
+    "image": "/f24b4694-71c5-4132-bd67-e1a79b4a6e1c.png",
+    "description": "Klassisk svart T-shirt med AA Studios-logotyp.",
+    "fit": "regular"
+  },
+  {
+    "id": "dam-logo-red",
+    "name": "AA Studios T-shirt (Röd)",
+    "price": 299,
+    "size": ["XS","S","M","L"],
+    "color": "Röd",
+    "category": "dam",
+    "image": "/304cdecb-bc0d-4143-b426-759f2c4ba608.png",
+    "description": "Trendig röd T-shirt med AA Studios-logotyp.",
+    "fit": "regular"
+  },
+  {
+    "id": "barn-logo-navy",
+    "name": "AA Studios T-shirt Barn (Marinblå)",
+    "price": 199,
+    "size": ["XS","S","M","L"],
+    "color": "Marinblå",
+    "category": "barn",
+    "image": "/6d567085-a501-4d49-841b-872b596a706f.png",
+    "description": "Marinblå AA Studios barn‑T-shirt.",
+    "fit": "regular"
+  },
+  {
+    "id": "herr-bike-white",
+    "name": "AA Studios Cykel T-shirt (Vit/Grön)",
+    "price": 299,
+    "size": ["S","M","L","XL"],
+    "color": "Vit/Grön",
+    "category": "herr",
+    "image": "/354f0b22-3e44-4782-9c63-f48ebd727fb8.png",
+    "description": "Vit T-shirt med grön AA och cykelmotiv.",
+    "fit": "regular"
+  },
+  {
+    "id": "dam-bike-lightgreen",
+    "name": "AA Studios Cykel T-shirt (Ljusgrön)",
+    "price": 299,
+    "size": ["XS","S","M","L"],
+    "color": "Ljusgrön",
+    "category": "dam",
+    "image": "/c2f3fd51-d88e-4d16-b113-8ab44178a06f.png",
+    "description": "Ljusgrön T-shirt med cykel och blommotiv.",
+    "fit": "regular"
+  },
+  {
+    "id": "barn-bike-pink",
+    "name": "AA Studios Cykel T-shirt Barn (Rosa)",
+    "price": 199,
+    "size": ["XS","S","M","L"],
+    "color": "Rosa",
+    "category": "barn",
+    "image": "/d3588507-bc0c-4217-9f51-8ff8f795c728.png",
+    "description": "Rosa barn‑T-shirt med cykel och blommotiv.",
+    "fit": "regular"
+  },
+  {
+    "id": "herr-motto-white",
+    "name": "\"It’s More Than Clothing\" T-shirt (Vit)",
+    "price": 299,
+    "size": ["S","M","L","XL"],
+    "color": "Vit",
+    "category": "herr",
+    "image": "/dbd17a4e-88b5-4750-846a-8299b992a388.png",
+    "description": "Vit T-shirt med texten \"It's More Than Clothing\".",
+    "fit": "regular"
+  },
+  {
+    "id": "dam-motto-yellow",
+    "name": "\"It’s More Than Clothing\" T-shirt (Gul)",
+    "price": 299,
+    "size": ["XS","S","M","L"],
+    "color": "Gul",
+    "category": "dam",
+    "image": "/23901912-cfd1-45cc-9df4-67b956deb194.png",
+    "description": "Gul T-shirt med texten \"It's More Than Clothing\".",
     "fit": "regular"
   }
+
+  }
+
 ]
+
