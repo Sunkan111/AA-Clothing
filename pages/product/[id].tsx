@@ -29,13 +29,25 @@ export default function ProductPage() {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    // Fetch all products and find the one matching the current id
-    fetch('/data/products.json')
-      .then((res) => res.json())
-      .then((data: Product[]) => {
+    /**
+     * Load product data using a dynamic import rather than fetching from
+     * "/data/products.json". Static JSON files in the project are not exposed
+     * via Next.js' public directory by default, so importing ensures the data
+     * is bundled at build time. We import from '../../data/products.json'
+     * because this page is located in `pages/product`, two levels down from
+     * the project root. If the module has a `default` export we use that;
+     * otherwise we use the module itself. After loading, we set the full
+     * product list and extract the product matching the current `id`.
+     */
+    import('../../data/products.json')
+      .then((module) => {
+        const data: Product[] = (module as any).default || module;
         setProducts(data);
         const found = data.find((p) => p.id === id);
         if (found) setProduct(found);
+      })
+      .catch((err) => {
+        console.error('Failed to load product data', err);
       });
   }, [id]);
 
