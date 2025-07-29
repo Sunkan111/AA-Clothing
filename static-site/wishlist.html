@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favoriter – AA Clothing</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo"><a href="index.html" style="color: white; text-decoration: none;">AA Clothing</a></div>
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Sök produkter..."
+          autocomplete="off"
+        />
+        <ul id="searchSuggestions" class="suggestions"></ul>
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Dam</a>
+            <div class="dropdown-content">
+              <a href="category.html?category=Kläder&gender=Dam">Kläder</a>
+              <a href="category.html?category=Skor&gender=Dam">Skor</a>
+              <a href="category.html?category=Accessoarer&gender=Dam">Accessoarer</a>
+              <a href="category.html?category=Sport&gender=Dam">Sport</a>
+              <a href="category.html?category=Outlet&gender=Dam">Outlet</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Herr</a>
+            <div class="dropdown-content">
+              <a href="category.html?category=Kläder&gender=Herr">Kläder</a>
+              <a href="category.html?category=Skor&gender=Herr">Skor</a>
+              <a href="category.html?category=Accessoarer&gender=Herr">Accessoarer</a>
+              <a href="category.html?category=Sport&gender=Herr">Sport</a>
+              <a href="category.html?category=Outlet&gender=Herr">Outlet</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Barn</a>
+            <div class="dropdown-content">
+              <a href="category.html?category=Kläder&gender=Barn">Kläder</a>
+              <a href="category.html?category=Skor&gender=Barn">Skor</a>
+              <a href="category.html?category=Accessoarer&gender=Barn">Accessoarer</a>
+              <a href="category.html?category=Sport&gender=Barn">Sport</a>
+              <a href="category.html?category=Outlet&gender=Barn">Outlet</a>
+            </div>
+          </li>
+          <li><a href="help.html">Hjälp & FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="account-links">
+        <a href="wishlist.html" title="Favoriter" class="icon-link">❤</a>
+        <a href="cart.html" title="Varukorg" class="icon-link">🛒</a>
+        <a href="account.html" title="Mitt konto" class="icon-link">👤</a>
+      </div>
+    </header>
+
+    <main class="wishlist-page">
+      <div class="container">
+        <h1>Mina favoriter</h1>
+        <div id="wishlistItems" class="product-list"></div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-col">
+        <h3>Kundservice</h3>
+        <ul>
+          <li><a href="help.html">Hjälp & FAQ</a></li>
+          <li><a href="returns.html">Retur och byten</a></li>
+          <li><a href="shipping.html">Frakt & leverans</a></li>
+          <li><a href="payment.html">Betalningsalternativ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Om oss</h3>
+        <ul>
+          <li><a href="about.html">Vårt företag</a></li>
+          <li><a href="sustainability.html">Hållbarhet</a></li>
+          <li><a href="careers.html">Karriär</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Följ oss</h3>
+        <ul class="social-links">
+          <li><a href="#" aria-label="Instagram">📷 Instagram</a></li>
+          <li><a href="#" aria-label="Facebook">👍 Facebook</a></li>
+          <li><a href="#" aria-label="TikTok">🎙 TikTok</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Ladda ned vår app</h3>
+        <p>Snart kommer våra appar för iOS och Android.</p>
+      </div>
+    </footer>
+
+    <script src="data/products.js"></script>
+    <script src="script.js"></script>
+    <script src="wishlist.js"></script>
+  </body>
+</html>
