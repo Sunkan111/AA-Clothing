@@ -1,0 +1,168 @@
+/*
+ * Produktdata för AA Clothing. Denna array representerar ett urval av
+ * artiklar från olika kategorier, varumärken och kön. I en riktig
+ * webbutik skulle dessa data hämtas från en server eller databas. Här
+ * används statisk data för att möjliggöra sökning, filtrering och
+ * visning på klientsidan.
+ */
+
+window.PRODUCTS = [
+  {
+    id: 1,
+    name: "Randig T-shirt",
+    brand: "Basics",
+    gender: "Herr",
+    category: "Kläder",
+    subcategory: "T-shirts",
+    price: 149,
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Röd/Vit", "Blå/Vit"],
+    images: [
+      "https://images.unsplash.com/photo-1564468781193-47de0c6f4532?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1598300054267-1af97efed3cd?auto=format&fit=crop&w=400&q=80",
+    ],
+    description:
+      "Klassisk randig T-shirt i mjuk bomull. Perfekt för avslappnade dagar.",
+    material: "100% bomull",
+    care: "Maskintvätt 30 °C",
+    stock: { S: 10, M: 20, L: 15, XL: 5 },
+  },
+  {
+    id: 2,
+    name: "Oversized hoodie",
+    brand: "StreetCo",
+    gender: "Dam",
+    category: "Kläder",
+    subcategory: "Hoodies",
+    price: 399,
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Svart", "Grå"],
+    images: [
+      "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1606902965551-dce093cda6a6?auto=format&fit=crop&w=400&q=80",
+    ],
+    description:
+      "Mysig oversized hoodie med ljust innerfoder. Perfekt för kalla kvällar.",
+    material: "60% bomull, 40% polyester",
+    care: "Maskintvätt 40 °C",
+    stock: { XS: 5, S: 12, M: 18, L: 8 },
+  },
+  {
+    id: 3,
+    name: "Jeans Slim Fit",
+    brand: "DenimWorks",
+    gender: "Herr",
+    category: "Kläder",
+    subcategory: "Byxor",
+    price: 599,
+    sizes: ["28", "30", "32", "34", "36"],
+    colors: ["Mörkblå"],
+    images: [
+      "https://images.unsplash.com/photo-1524070809382-c3093ba9a78b?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+    ],
+    description:
+      "Klassiska slim fit-jeans i stretchigt denim. Snygg passform för alla tillfällen.",
+    material: "98% bomull, 2% elastan",
+    care: "Maskintvätt 40 °C",
+    stock: { 28: 10, 30: 20, 32: 15, 34: 7, 36: 5 },
+  },
+  {
+    id: 4,
+    name: "Sneakers Classic",
+    brand: "StepUp",
+    gender: "Unisex",
+    category: "Skor",
+    subcategory: "Sneakers",
+    price: 799,
+    sizes: ["36", "37", "38", "39", "40", "41", "42", "43"],
+    colors: ["Vit", "Svart"],
+    images: [
+      "https://images.unsplash.com/photo-1562158076-ebf9c6906d48?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=80",
+    ],
+    description: "Tidlösa sneakers i läderimitation. Perfekt till vardags.",
+    material: "Syntetisk läder, gummisula",
+    care: "Torkas av med fuktig trasa",
+    stock: { 36: 4, 37: 8, 38: 12, 39: 6, 40: 10, 41: 10, 42: 8, 43: 5 },
+  },
+  {
+    id: 5,
+    name: "Barnjacka Vinter",
+    brand: "MiniKids",
+    gender: "Barn",
+    category: "Kläder",
+    subcategory: "Jackor",
+    price: 699,
+    sizes: ["98", "104", "110", "116"],
+    colors: ["Blå", "Rosa"],
+    images: [
+      "https://images.unsplash.com/photo-1544033527-00a037fcb82c?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1508609349937-5ec4ae374eb2?auto=format&fit=crop&w=400&q=80",
+    ],
+    description: "Varm och vattenavvisande vinterjacka med reflexdetaljer.",
+    material: "100% polyester",
+    care: "Maskintvätt 40 °C",
+    stock: { 98: 10, 104: 15, 110: 7, 116: 4 },
+  },
+  {
+    id: 6,
+    name: "Sport-bh",
+    brand: "ActiveWear",
+    gender: "Dam",
+    category: "Sport",
+    subcategory: "Träningskläder",
+    price: 249,
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Svart", "Korall"],
+    images: [
+      "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1496407287812-f2d7ee70b2fa?auto=format&fit=crop&w=400&q=80",
+    ],
+    description:
+      "Stödjande sport-bh med fukttransporterande material. Håller dig sval och bekväm.",
+    material: "75% nylon, 25% elastan",
+    care: "Maskintvätt 30 °C",
+    stock: { XS: 8, S: 12, M: 16, L: 8 },
+  },
+  {
+    id: 7,
+    name: "Weekendväska",
+    brand: "CarryAll",
+    gender: "Unisex",
+    category: "Accessoarer",
+    subcategory: "Väskor",
+    price: 549,
+    sizes: ["One Size"],
+    colors: ["Brun"],
+    images: [
+      "https://images.unsplash.com/photo-1559561853-60b18e1d101c?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1586864380595-9b4bdd0d99d4?auto=format&fit=crop&w=400&q=80",
+    ],
+    description:
+      "Rymlig weekendväska i vegetabiliskt garvat läder. Lika fin som hållbar.",
+    material: "Äkta läder",
+    care: "Behandla med läderbalsam vid behov",
+    stock: { "One Size": 10 },
+  },
+  {
+    id: 8,
+    name: "Löparshorts",
+    brand: "RunFast",
+    gender: "Herr",
+    category: "Sport",
+    subcategory: "Träningskläder",
+    price: 299,
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Svart", "Blå"],
+    images: [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1600185361813-90fafa2d1e1c?auto=format&fit=crop&w=400&q=80",
+    ],
+    description:
+      "Lätta och snabbtorkande löparshorts med inbyggda meshpaneler. Idealisk för träning och tävling.",
+    material: "100% polyester",
+    care: "Maskintvätt 30 °C",
+    stock: { S: 12, M: 18, L: 14, XL: 10 },
+  },
+];
