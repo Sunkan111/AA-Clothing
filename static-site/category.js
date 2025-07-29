@@ -69,19 +69,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function applyFilters() {
     let results = [...filtered];
-    const brand = brandFilter.value;
-    const size = sizeFilter.value;
-    const color = colorFilter.value;
+    // Gather selected values from multi‑select filters
+    const selectedBrands = Array.from(brandFilter.selectedOptions)
+      .map((opt) => opt.value)
+      .filter((v) => v);
+    const selectedSizes = Array.from(sizeFilter.selectedOptions)
+      .map((opt) => opt.value)
+      .filter((v) => v);
+    const selectedColors = Array.from(colorFilter.selectedOptions)
+      .map((opt) => opt.value)
+      .filter((v) => v);
     const maxPrice = priceFilter.value;
-    if (brand) {
-      results = results.filter((p) => p.brand === brand);
+
+    // Filter by brand if any selected
+    if (selectedBrands.length > 0) {
+      results = results.filter((p) => selectedBrands.includes(p.brand));
     }
-    if (size) {
-      results = results.filter((p) => p.sizes.includes(size));
+    // Filter by size (product has at least one selected size)
+    if (selectedSizes.length > 0) {
+      results = results.filter((p) =>
+        p.sizes.some((s) => selectedSizes.includes(s))
+      );
     }
-    if (color) {
-      results = results.filter((p) => p.colors.includes(color));
+    // Filter by color (product has at least one selected color)
+    if (selectedColors.length > 0) {
+      results = results.filter((p) =>
+        p.colors.some((c) => selectedColors.includes(c))
+      );
     }
+    // Filter by max price
     if (maxPrice) {
       const priceVal = parseFloat(maxPrice);
       results = results.filter((p) => p.price <= priceVal);
