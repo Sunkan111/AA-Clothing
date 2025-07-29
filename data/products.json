@@ -1,24 +1,452 @@
 [
   {
-    "id": "1",
-    "name": "T-shirt Basic",
-    "price": 199,
-    "size": ["S", "M", "L"],
-    "color": "black",
-    "category": "tshirt",
+    "id": "dam1",
+    "name": "Klänning Röd",
+    "price": 299,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "red",
+    "category": "dam",
     "image": "/tshirt.png",
-    "description": "En basic t-shirt i mjuk bomull.",
+    "description": "Klänning Röd för dam.",
     "fit": "regular"
   },
   {
-    "id": "2",
-    "name": "Jeans Slim Fit",
-    "price": 499,
-    "size": ["M", "L"],
+    "id": "dam2",
+    "name": "Klänning Blå",
+    "price": 349,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
     "color": "blue",
-    "category": "jeans",
-    "image": "/jeans.png",
-    "description": "Slim fit jeans i denim.",
+    "category": "dam",
+    "image": "/tshirt.png",
+    "description": "Klänning Blå för dam.",
+    "fit": "regular"
+  },
+  {
+    "id": "dam3",
+    "name": "Blus Vit",
+    "price": 199,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "white",
+    "category": "dam",
+    "image": "/tshirt.png",
+    "description": "Blus Vit för dam.",
     "fit": "slim"
+  },
+  {
+    "id": "dam4",
+    "name": "Jeans Skinny Dam",
+    "price": 499,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "black",
+    "category": "dam",
+    "image": "/jeans.png",
+    "description": "Jeans Skinny Dam för dam.",
+    "fit": "slim"
+  },
+  {
+    "id": "dam5",
+    "name": "Topp Kort",
+    "price": 149,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "pink",
+    "category": "dam",
+    "image": "/tshirt.png",
+    "description": "Topp Kort för dam.",
+    "fit": "regular"
+  },
+  {
+    "id": "dam6",
+    "name": "Jacka Lång",
+    "price": 699,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "brown",
+    "category": "dam",
+    "image": "/tshirt.png",
+    "description": "Jacka Lång för dam.",
+    "fit": "loose"
+  },
+  {
+    "id": "dam7",
+    "name": "Kjol Midi",
+    "price": 399,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "green",
+    "category": "dam",
+    "image": "/tshirt.png",
+    "description": "Kjol Midi för dam.",
+    "fit": "regular"
+  },
+  {
+    "id": "dam8",
+    "name": "Tröja Stickad",
+    "price": 249,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "grey",
+    "category": "dam",
+    "image": "/tshirt.png",
+    "description": "Tröja Stickad för dam.",
+    "fit": "loose"
+  },
+  {
+    "id": "dam9",
+    "name": "Kavaj Dam",
+    "price": 599,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "black",
+    "category": "dam",
+    "image": "/tshirt.png",
+    "description": "Kavaj Dam för dam.",
+    "fit": "slim"
+  },
+  {
+    "id": "dam10",
+    "name": "Byxor Culotte",
+    "price": 329,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "beige",
+    "category": "dam",
+    "image": "/tshirt.png",
+    "description": "Byxor Culotte för dam.",
+    "fit": "regular"
+  },
+  {
+    "id": "herr1",
+    "name": "Skjorta Vit",
+    "price": 299,
+    "size": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "color": "white",
+    "category": "herr",
+    "image": "/tshirt.png",
+    "description": "Skjorta Vit för herr.",
+    "fit": "regular"
+  },
+  {
+    "id": "herr2",
+    "name": "Skjorta Randig",
+    "price": 349,
+    "size": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "color": "blue",
+    "category": "herr",
+    "image": "/tshirt.png",
+    "description": "Skjorta Randig för herr.",
+    "fit": "regular"
+  },
+  {
+    "id": "herr3",
+    "name": "Jeans Straight",
+    "price": 499,
+    "size": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "color": "blue",
+    "category": "herr",
+    "image": "/jeans.png",
+    "description": "Jeans Straight för herr.",
+    "fit": "regular"
+  },
+  {
+    "id": "herr4",
+    "name": "T-shirt Grå",
+    "price": 199,
+    "size": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "color": "grey",
+    "category": "herr",
+    "image": "/tshirt.png",
+    "description": "T-shirt Grå för herr.",
+    "fit": "regular"
+  },
+  {
+    "id": "herr5",
+    "name": "Hoodie Svart",
+    "price": 399,
+    "size": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "color": "black",
+    "category": "herr",
+    "image": "/tshirt.png",
+    "description": "Hoodie Svart för herr.",
+    "fit": "loose"
+  },
+  {
+    "id": "herr6",
+    "name": "Kavaj Herr",
+    "price": 699,
+    "size": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "color": "navy",
+    "category": "herr",
+    "image": "/tshirt.png",
+    "description": "Kavaj Herr för herr.",
+    "fit": "slim"
+  },
+  {
+    "id": "herr7",
+    "name": "Byxor Chinos",
+    "price": 429,
+    "size": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "color": "khaki",
+    "category": "herr",
+    "image": "/jeans.png",
+    "description": "Byxor Chinos för herr.",
+    "fit": "regular"
+  },
+  {
+    "id": "herr8",
+    "name": "Jacka Bomber",
+    "price": 599,
+    "size": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "color": "green",
+    "category": "herr",
+    "image": "/tshirt.png",
+    "description": "Jacka Bomber för herr.",
+    "fit": "regular"
+  },
+  {
+    "id": "herr9",
+    "name": "Pullover",
+    "price": 249,
+    "size": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "color": "burgundy",
+    "category": "herr",
+    "image": "/tshirt.png",
+    "description": "Pullover för herr.",
+    "fit": "regular"
+  },
+  {
+    "id": "herr10",
+    "name": "Kostym",
+    "price": 999,
+    "size": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "color": "black",
+    "category": "herr",
+    "image": "/tshirt.png",
+    "description": "Kostym för herr.",
+    "fit": "slim"
+  },
+  {
+    "id": "barn1",
+    "name": "T-shirt Barn",
+    "price": 99,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "yellow",
+    "category": "barn",
+    "image": "/tshirt.png",
+    "description": "T-shirt Barn för barn.",
+    "fit": "regular"
+  },
+  {
+    "id": "barn2",
+    "name": "Jeans Barn",
+    "price": 199,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "blue",
+    "category": "barn",
+    "image": "/jeans.png",
+    "description": "Jeans Barn för barn.",
+    "fit": "regular"
+  },
+  {
+    "id": "barn3",
+    "name": "Jacka Barn",
+    "price": 299,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "red",
+    "category": "barn",
+    "image": "/tshirt.png",
+    "description": "Jacka Barn för barn.",
+    "fit": "regular"
+  },
+  {
+    "id": "barn4",
+    "name": "Kjol Barn",
+    "price": 149,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "pink",
+    "category": "barn",
+    "image": "/tshirt.png",
+    "description": "Kjol Barn för barn.",
+    "fit": "regular"
+  },
+  {
+    "id": "barn5",
+    "name": "Tröja Barn",
+    "price": 199,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "green",
+    "category": "barn",
+    "image": "/tshirt.png",
+    "description": "Tröja Barn för barn.",
+    "fit": "regular"
+  },
+  {
+    "id": "barn6",
+    "name": "Byxor Lek",
+    "price": 249,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "grey",
+    "category": "barn",
+    "image": "/jeans.png",
+    "description": "Byxor Lek för barn.",
+    "fit": "regular"
+  },
+  {
+    "id": "barn7",
+    "name": "Klänning Barn",
+    "price": 199,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "purple",
+    "category": "barn",
+    "image": "/tshirt.png",
+    "description": "Klänning Barn för barn.",
+    "fit": "regular"
+  },
+  {
+    "id": "barn8",
+    "name": "Shorts Barn",
+    "price": 129,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "blue",
+    "category": "barn",
+    "image": "/tshirt.png",
+    "description": "Shorts Barn för barn.",
+    "fit": "regular"
+  },
+  {
+    "id": "barn9",
+    "name": "Hoodie Barn",
+    "price": 299,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "black",
+    "category": "barn",
+    "image": "/tshirt.png",
+    "description": "Hoodie Barn för barn.",
+    "fit": "loose"
+  },
+  {
+    "id": "barn10",
+    "name": "Pyjamas Barn",
+    "price": 149,
+    "size": [
+      "S",
+      "M",
+      "L"
+    ],
+    "color": "white",
+    "category": "barn",
+    "image": "/tshirt.png",
+    "description": "Pyjamas Barn för barn.",
+    "fit": "regular"
   }
 ]
