@@ -133,6 +133,26 @@ body {
   color: white;
 }
 
+/* Position relative for icon link to show badge count */
+.account-links .icon-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Badge counter for cart and wishlist */
+.account-links .icon-link .count {
+  position: absolute;
+  top: -0.4rem;
+  right: -0.6rem;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.65rem;
+  line-height: 1;
+}
+
 /* Hero */
 .hero {
   background-image: url('https://images.unsplash.com/photo-1551844546-b0a6aebad42b?auto=format&fit=crop&w=1920&q=80');

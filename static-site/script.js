@@ -81,6 +81,8 @@ function toggleFavorite(productId) {
     favs.push(productId);
   }
   localStorage.setItem('favorites', JSON.stringify(favs));
+  // Uppdatera favorit-räkning i header
+  updateCounts();
 }
 
 // Spara och hämta varukorg i localStorage
@@ -98,4 +100,24 @@ function addToCart(productId, size, quantity) {
     cart.push({ id: productId, size, quantity });
   }
   localStorage.setItem('cart', JSON.stringify(cart));
+  // Uppdatera varukorgsräkning i header
+  updateCounts();
 }
+
+// Uppdatera räknare för favoriter och varukorg i headern
+function updateCounts() {
+  const favs = getFavorites();
+  const wishlistCountEl = document.getElementById('wishlistCount');
+  if (wishlistCountEl) {
+    wishlistCountEl.textContent = favs.length;
+  }
+  const cartItems = getCart();
+  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const cartCountEl = document.getElementById('cartCount');
+  if (cartCountEl) {
+    cartCountEl.textContent = cartCount;
+  }
+}
+
+// Kör uppdatering av räknare när sidan laddat
+document.addEventListener('DOMContentLoaded', updateCounts);
