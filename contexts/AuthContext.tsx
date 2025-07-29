@@ -1,78 +1,94 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 /**
- * A simple authentication context used to keep track of the currently logged
- * in user. The context exposes a user object along with login and logout
- * functions. For demonstration purposes this implementation stores the
- * session in localStorage and does not perform any backend validation.
+ * Authentication context for AA‑Clothing.
+ *
+ * Detta enkla auth‑system lagrar användare lokalt i webbläsarens
+ * localStorage. Varje användare har en e‑postadress och ett lösenord
+ * (lagrat i klartext för demoändamål – ersätt med en säker hash
+ * och extern databas i en riktig produktionsmiljö). Funktionerna
+ * register, login och logout gör det möjligt att skapa ett konto,
+ * logga in och logga ut. Den aktuella användaren exponeras via
+ * `user` och persistens sker via localStorage.
  */
+
 interface User {
   email: string;
 }
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => void;
+  register: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  // Load user from localStorage when the provider mounts. This keeps the
-  // authentication state persistent across page reloads.
+  // Ladda aktuell användare från localStorage när komponenten mountas
   useEffect(() => {
-    const stored = typeof window !== 'undefined' && localStorage.getItem('user');
-    if (stored) {
-      try {
-        setUser(JSON.parse(stored));
-      } catch {
-        setUser(null);
-      }
-    }
+    const stored = localStorage.getItem('user');
+    if (stored) setUser(JSON.parse(stored));
   }, []);
 
   /**
-   * Log a user in by storing their email in state and localStorage. In a real
-   * application you would validate the credentials against an API.
+   * Registrera en ny användare.
+   * Kastar ett fel om e‑posten redan finns.
    */
-  const login = (email: string, _password: string) => {
+  const register = async (email: string, password: string) => {
+    const usersJson = localStorage.getItem('users');
+    const users: Array<{ email: string; password: string }> = usersJson ? JSON.parse(usersJson) : [];
+    if (users.find((u) => u.email === email)) {
+      throw new Error('Det finns redan ett konto med den e‑postadressen');
+    }
+    users.push({ email, password });
+    localStorage.setItem('users', JSON.stringify(users));
+    // auto login after registration
     const newUser: User = { email };
     setUser(newUser);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('user', JSON.stringify(newUser));
-    }
+    localStorage.setItem('user', JSON.stringify(newUser));
   };
 
   /**
-   * Log the user out by clearing the local state and removing the item from
-   * localStorage.
+   * Logga in en befintlig användare.
+   * Kastar ett fel om e‑posten eller lösenordet inte matchar.
+   */
+  const login = async (email: string, password: string) => {
+    const usersJson = localStorage.getItem('users');
+    const users: Array<{ email: string; password: string }> = usersJson ? JSON.parse(usersJson) : [];
+    const existing = users.find((u) => u.email === email && u.password === password);
+    if (!existing) {
+      throw new Error('Fel e‑postadress eller lösenord');
+    }
+    const newUser: User = { email };
+    setUser(newUser);
+    localStorage.setItem('user', JSON.stringify(newUser));
+  };
+
+  /**
+   * Logga ut aktuell användare.
    */
   const logout = () => {
     setUser(null);
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('user');
-    }
+    localStorage.removeItem('user');
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, register, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
 /**
- * Custom hook to make it easier to access the AuthContext throughout the
- * application. Throws an error if used outside of AuthProvider.
+ * Hook för att använda auth‑kontexten.
  */
-export const useAuth = (): AuthContextType => {
+export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
