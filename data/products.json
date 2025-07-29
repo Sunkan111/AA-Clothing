@@ -446,8 +446,10 @@
     "color": "white",
     "category": "barn",
     "image": "/tshirt.png",
-    "description": "Pyjamas Barn för barn.",
-    "fit": "regular",
+  "description": "Pyjamas Barn för barn.",
+  "fit": "regular"
+},
+
   {
     "id": "herr-logo-black",
     "name": "AA Studios T-shirt (Svart)",
