@@ -1,10 +1,11 @@
 /* Basfärger och variabler */
 :root {
-  --primary: #111827; /* mörk blåsvart */
-  --accent: #e11d48; /* rosa accent */
+  /* Justera färger för en ljusare och mer modern palett */
+  --primary: #1f2937; /* mörk blåsvart men något ljusare för header */
+  --accent: #e11d48; /* rosa accent (behåll) */
   --light: #f9fafb; /* mycket ljus grå */
   --gray: #6b7280;
-  --dark: #1f2937;
+  --dark: #111827;
   --border: #e5e7eb;
 }
 
@@ -15,7 +16,7 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--light);
   color: var(--dark);
   line-height: 1.6;
@@ -409,6 +410,124 @@ body {
 }
 .favorite-button.active {
   color: var(--accent);
+}
+
+/* Quick view modal */
+.quick-view-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: none;
+}
+
+.product-card:hover .quick-view-btn {
+  display: block;
+}
+
+#quickViewOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#quickViewOverlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+#quickViewModal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  width: 500px;
+  max-height: 90%;
+  overflow-y: auto;
+  position: relative;
+}
+
+#quickViewModal img {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.quick-view-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Reviews styling */
+.reviews {
+  margin-top: 20px;
+}
+
+.review-item {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.review-rating {
+  color: #f5b301;
+  margin-bottom: 5px;
+}
+
+#reviewForm {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#reviewForm textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  resize: vertical;
+}
+
+#reviewForm button {
+  align-self: flex-start;
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#reviewForm select {
+  width: 60px;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
 }
 
 .social-links li {
