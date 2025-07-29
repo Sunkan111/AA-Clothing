@@ -1,4 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+// Import Firebase authentication utilities and our initialized client
+import { auth } from '../firebaseClient';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  User as FirebaseUser,
+} from 'firebase/auth';
 
 /**
  * Authentication context for AA‑Clothing.
@@ -13,7 +22,14 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
  */
 
 interface User {
-  email: string;
+  /**
+   * The Firebase UID of the authenticated user
+   */
+  uid: string;
+  /**
+   * The email address associated with the account. May be null if none.
+   */
+  email: string | null;
 }
 
 interface AuthContextType {
@@ -28,52 +44,67 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  // Ladda aktuell användare från localStorage när komponenten mountas
+  // Prenumerera på Firebase-authstatus när komponenten mountas
   useEffect(() => {
-    const stored = localStorage.getItem('user');
-    if (stored) setUser(JSON.parse(stored));
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser: FirebaseUser | null) => {
+      if (firebaseUser) {
+        setUser({ uid: firebaseUser.uid, email: firebaseUser.email });
+      } else {
+        setUser(null);
+      }
+    });
+    return () => unsubscribe();
   }, []);
 
   /**
-   * Registrera en ny användare.
-   * Kastar ett fel om e‑posten redan finns.
+   * Registrera en ny användare via Firebase Authentication. Eventuella fel
+   * översätts till svenska meddelanden.
    */
   const register = async (email: string, password: string) => {
-    const usersJson = localStorage.getItem('users');
-    const users: Array<{ email: string; password: string }> = usersJson ? JSON.parse(usersJson) : [];
-    if (users.find((u) => u.email === email)) {
-      throw new Error('Det finns redan ett konto med den e‑postadressen');
+    try {
+      const credential = await createUserWithEmailAndPassword(auth, email, password);
+      const firebaseUser = credential.user;
+      setUser({ uid: firebaseUser.uid, email: firebaseUser.email });
+    } catch (err: any) {
+      let message = 'Ett fel inträffade vid registrering';
+      if (err.code === 'auth/email-already-in-use') {
+        message = 'Det finns redan ett konto med den e‑postadressen';
+      } else if (err.code === 'auth/invalid-email') {
+        message = 'Ogiltig e‑postadress';
+      } else if (err.code === 'auth/weak-password') {
+        message = 'Lösenordet är för svagt';
+      }
+      throw new Error(message);
     }
-    users.push({ email, password });
-    localStorage.setItem('users', JSON.stringify(users));
-    // auto login after registration
-    const newUser: User = { email };
-    setUser(newUser);
-    localStorage.setItem('user', JSON.stringify(newUser));
   };
 
   /**
-   * Logga in en befintlig användare.
-   * Kastar ett fel om e‑posten eller lösenordet inte matchar.
+   * Logga in en befintlig användare via Firebase Authentication.
    */
   const login = async (email: string, password: string) => {
-    const usersJson = localStorage.getItem('users');
-    const users: Array<{ email: string; password: string }> = usersJson ? JSON.parse(usersJson) : [];
-    const existing = users.find((u) => u.email === email && u.password === password);
-    if (!existing) {
-      throw new Error('Fel e‑postadress eller lösenord');
+    try {
+      const credential = await signInWithEmailAndPassword(auth, email, password);
+      const firebaseUser = credential.user;
+      setUser({ uid: firebaseUser.uid, email: firebaseUser.email });
+    } catch (err: any) {
+      let message = 'Fel e‑postadress eller lösenord';
+      if (err.code === 'auth/user-not-found') {
+        message = 'Ingen användare hittades med den e‑postadressen';
+      } else if (err.code === 'auth/wrong-password') {
+        message = 'Fel lösenord';
+      } else if (err.code === 'auth/invalid-email') {
+        message = 'Ogiltig e‑postadress';
+      }
+      throw new Error(message);
     }
-    const newUser: User = { email };
-    setUser(newUser);
-    localStorage.setItem('user', JSON.stringify(newUser));
   };
 
   /**
-   * Logga ut aktuell användare.
+   * Logga ut aktuell användare via Firebase Authentication.
    */
-  const logout = () => {
+  const logout = async () => {
+    await signOut(auth);
     setUser(null);
-    localStorage.removeItem('user');
   };
 
   return (
