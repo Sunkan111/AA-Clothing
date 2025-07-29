@@ -121,3 +121,15 @@ function updateCounts() {
 
 // Kör uppdatering av räknare när sidan laddat
 document.addEventListener('DOMContentLoaded', updateCounts);
+// Navigera till sökresultatsida vid Enter i sökfältet
+if (searchInput) {
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const query = searchInput.value.trim();
+      if (query.length > 0) {
+        window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+      }
+    }
+  });
+}
