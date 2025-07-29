@@ -28,12 +28,10 @@ export default function Register() {
     try {
       await registerUser(email, password);
       setError(null);
-      alert('Konto skapat! Du kan nu logga in.');
-      router.push('/login');
+
+router.push('/');
     } catch (err: any) {
-      setError(err.message || 'Misslyckades att skapa konto');
-    }
-  };
+  sesetError(err.message || 'Misslyckades att skapa konto');
 
   return (
     <div className="max-w-sm mx-auto mt-10">
