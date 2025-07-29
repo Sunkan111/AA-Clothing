@@ -4,44 +4,40 @@ import Link from 'next/link';
 import { useAuth } from '../contexts/AuthContext';
 
 /**
- * Login page for AA‑Clothing.
+ * Register page for AA‑Clothing.
  *
- * This page prompts the user for an e‑postadress och lösenord. När formuläret
- * skickas anropas login‑funktionen i AuthContext. Om inloggningen lyckas
- * omdirigeras användaren till startsidan. Om användaren redan är
- * inloggad visas ett meddelande istället för formuläret.
+ * Här kan användare skapa ett nytt konto genom att ange sin e‑postadress
+ * och ett lösenord. Formuläret validerar att lösenordet och
+ * bekräftelsen matchar. Efter registrering omdirigeras användaren
+ * till inloggningssidan.
  */
-export default function Login() {
-  const { user, login } = useAuth();
+export default function Register() {
   const router = useRouter();
+  const { register: registerUser } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      setError('Lösenorden matchar inte');
+      return;
+    }
     try {
-      await login(email, password);
+      await registerUser(email, password);
       setError(null);
-      router.push('/');
+      alert('Konto skapat! Du kan nu logga in.');
+      router.push('/login');
     } catch (err: any) {
-      // Login throws an Error when credentials are invalid
-      setError(err.message || 'Fel e‑postadress eller lösenord');
+      setError(err.message || 'Misslyckades att skapa konto');
     }
   };
 
-  if (user) {
-    return (
-      <div className="max-w-sm mx-auto mt-10 text-center">
-        <h1 className="text-2xl font-bold mb-4">Du är redan inloggad</h1>
-        <p className="text-gray-600">Du kan fortsätta handla eller logga ut från menyn.</p>
-      </div>
-    );
-  }
-
   return (
     <div className="max-w-sm mx-auto mt-10">
-      <h1 className="text-2xl font-bold mb-4 text-center">Logga in</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Skapa konto</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         {error && <p className="text-red-600 text-sm text-center">{error}</p>}
         <div>
@@ -64,17 +60,27 @@ export default function Login() {
             required
           />
         </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Bekräfta lösenord</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-black focus:ring-black"
+            required
+          />
+        </div>
         <button
           type="submit"
           className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition"
         >
-          Logga in
+          Skapa konto
         </button>
       </form>
       <p className="mt-4 text-center text-sm">
-        Har du inget konto?{' '}
-        <Link href="/register" className="text-blue-600 hover:underline">
-          Skapa konto
+        Har du redan ett konto?{' '}
+        <Link href="/login" className="text-blue-600 hover:underline">
+          Logga in
         </Link>
       </p>
     </div>
