@@ -12,12 +12,14 @@ import { useAuth } from '../contexts/AuthContext';
  * till inloggningssidan.
  */
 export default function Register() {
-  const router = useRouter();
+   const router = useRouter();
   const { register: registerUser } = useAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  
+   const [email, setEmail] = useState('');
+   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] =useState('');
   const [error, setError] = useState<string | null>(null);
+    const [isRegistered, setIsRegistered] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,12 +30,26 @@ export default function Register() {
     try {
       await registerUser(email, password);
       setError(null);
+          setIsRegistered(true);
 
-router.push('/');
     } catch (err: any) {
-  sesetError(err.message || 'Misslyckades att skapa konto');
+      setError((err as any).message || 'Misslyckades att skapa konto');     s
+    
+  if (isRegistered) {
+    return (
+      <div className="max-w-sm mx-auto mt-10 text-center">
+        <h1 className="text-2xl font-bold mb-4">Konto skapat</h1>
+        <p className="text-green-600 mb-4">Grattis! Ditt konto har skapats.</p>
+        <Link href="/">
+          <a className="inline-block px-4 py-2 bg-black text-white rounded">Tillbaka till startsidan</a>
+        </Link>
+      </div>
+    );
+  }
+
 
   return (
+      
     <div className="max-w-sm mx-auto mt-10">
       <h1 className="text-2xl font-bold mb-4 text-center">Skapa konto</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
