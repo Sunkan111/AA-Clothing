@@ -153,9 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
     content.appendChild(addBtn);
     // Link to product page
     const link = document.createElement('a');
-    link.href = `'poduct.html?id=' + product.id;d;
-    link.textContent = 'Se detaljer';
-    link.style.display = 'inline-block';
+    
+   link.textContent = 'Se detaljer';
+
+    llink.href = 'product.html?id=' + product.id;
+   
     link.style.marginTop = '10px';
     link.style.color = 'var(--accent)';
     content.appendChild(link);
