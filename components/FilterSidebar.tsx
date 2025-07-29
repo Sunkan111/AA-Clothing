@@ -1,53 +1,42 @@
 import { ChangeEvent } from 'react';
 
 /**
- * Filters interface describing the currently selected filter values.
- * All values are optional and when set to null indicate no filter for that
- * property. Adding new filter keys here means they must also be handled
- * in the calling component (e.g. pages/index.tsx).
+ * Defines the shape of the filter state used across pages. Each property
+ * corresponds to a dropdown value in the filter sidebar. A null value
+ * means no filter is applied for that property.
  */
 export type Filters = {
-  /** Selected clothing size (S, M, L) or null for all */
+  /** Selected clothing size (S, M, L, XL) or null for all */
   size: string | null;
   /** Selected fit (slim, regular, loose) or null for all */
   fit: string | null;
-  /** Selected category (e.g. tshirt, jeans) or null for all */
+  /** Selected category (dam, herr, barn) or null for all */
   category: string | null;
 };
 
-/**
- * FilterSidebar renders a sidebar with dropdowns to filter the product list by
- * size, fit and category as well as a dropdown to sort by price. It is
- * displayed on medium and larger screens and hidden on mobile to preserve
- * screen real estate.
- */
-export default function FilterSidebar({
-  filters,
-  onFilterChange,
-  sort,
-  onSortChange,
-}: {
+interface FilterSidebarProps {
   filters: Filters;
   onFilterChange: (filters: Filters) => void;
   sort: string;
   onSortChange: (sort: string) => void;
-}) {
-  // Update the size filter when the user selects a new size
+}
+
+/**
+ * FilterSidebar renders a vertical sidebar containing dropdowns to filter
+ * the product list by size, fit and category as well as a dropdown to
+ * sort by price. It is hidden on mobile to maximise available screen
+ * space and displayed on medium and larger screens.
+ */
+export default function FilterSidebar({ filters, onFilterChange, sort, onSortChange }: FilterSidebarProps) {
   const handleSizeChange = (e: ChangeEvent<HTMLSelectElement>) => {
     onFilterChange({ ...filters, size: e.target.value || null });
   };
-
-  // Update the fit filter when the user selects a new fit
   const handleFitChange = (e: ChangeEvent<HTMLSelectElement>) => {
     onFilterChange({ ...filters, fit: e.target.value || null });
   };
-
-  // Update the category filter when the user selects a new category
   const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
     onFilterChange({ ...filters, category: e.target.value || null });
   };
-
-  // Pass sort changes back to the parent component
   const handleSortChangeInternal = (e: ChangeEvent<HTMLSelectElement>) => {
     onSortChange(e.target.value);
   };
@@ -67,6 +56,7 @@ export default function FilterSidebar({
           <option value="S">S</option>
           <option value="M">M</option>
           <option value="L">L</option>
+          <option value="XL">XL</option>
         </select>
       </div>
       {/* Fit filter */}
@@ -92,19 +82,20 @@ export default function FilterSidebar({
           className="w-full border rounded p-2 text-sm"
         >
           <option value="">Alla</option>
-          <option value="tshirt">T‑shirts</option>
-          <option value="jeans">Jeans</option>
+          <option value="dam">Dam</option>
+          <option value="herr">Herr</option>
+          <option value="barn">Barn</option>
         </select>
       </div>
       {/* Sort options */}
-      <div>
+      <div className="mb-4">
         <label className="block mb-2 text-sm font-medium">Sortera</label>
         <select
           value={sort}
           onChange={handleSortChangeInternal}
           className="w-full border rounded p-2 text-sm"
         >
-          <option value="">Standard</option>
+          <option value="">Ingen</option>
           <option value="asc">Pris: Lågt till högt</option>
           <option value="desc">Pris: Högt till lågt</option>
         </select>
