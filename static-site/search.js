@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
    link.textContent = 'Se detaljer';
 
-    llink.href = 'product.html?id=' + product.id;
+   link.setAttribute('href', 'product.html?id=' + product.id);
    
     link.style.marginTop = '10px';
     link.style.color = 'var(--accent)';
