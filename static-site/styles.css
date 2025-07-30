@@ -879,3 +879,19 @@ body {
 .account-page button:hover {
   background-color: #be123c;
 }
+
+/* Stilmall för filterknappen längst ned i filtermenyn på kategorisidor. */
+.apply-filter-btn {
+  background-color: var(--accent);
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+.apply-filter-btn:hover {
+  background-color: #be123c;
+}

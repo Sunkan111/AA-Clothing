@@ -218,9 +218,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Eventlyssnare för filter och sortering
-  sizeFilter.addEventListener('change', applyFilters);
-  colorFilter.addEventListener('change', applyFilters);
-  priceFilter.addEventListener('input', applyFilters);
+  // Användaren trycker på sök-knappen för att applicera storlek/färg/prisfilter.
+  const applyBtn = document.getElementById('applyFilterBtn');
+  if (applyBtn) {
+    applyBtn.addEventListener('click', applyFilters);
+  }
+  // Sortering kan fortfarande ändras direkt
   sortSelect.addEventListener('change', applyFilters);
 
   // Render initialt

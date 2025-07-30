@@ -74,13 +74,15 @@
           <!-- Varumärke borttaget eftersom endast AA Studios säljs -->
           <details class="filter-group">
             <summary>Storlek</summary>
-            <select id="sizeFilter" multiple>
+            <!-- Endast en storlek kan väljas åt gången; ta bort 'multiple' för dropdown -->
+            <select id="sizeFilter">
               <option value="">Alla</option>
             </select>
           </details>
           <details class="filter-group">
             <summary>Färg</summary>
-            <select id="colorFilter" multiple>
+            <!-- Endast en färg kan väljas åt gången -->
+            <select id="colorFilter">
               <option value="">Alla</option>
             </select>
           </details>
@@ -97,6 +99,11 @@
               <option value="nameAsc">Namn A-Ö</option>
               <option value="nameDesc">Namn Ö-A</option>
             </select>
+          </div>
+
+          <!-- Knapp för att applicera valda filter -->
+          <div class="filter-group">
+            <button type="button" id="applyFilterBtn" class="apply-filter-btn">Sök</button>
           </div>
         </aside>
         <!-- Produktlistning -->
