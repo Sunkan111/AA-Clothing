@@ -243,6 +243,17 @@ body {
   background-position: center;
 }
 
+/* Kategorikort i hero-sektionen ska ha extra marginal uppåt och en lätt vit bakgrund för att framträda mot bakgrunden */
+.hero .hero-categories {
+  margin-top: 30px;
+}
+.hero .hero-categories .category-card {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+.hero .hero-categories .category-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
 /*
  * Anpassade bakgrundsbilder för startsidans kategorikort. Vi använder lokala
  * bilder som ligger i static-site/assets istället för externa Unsplash-bilder.
