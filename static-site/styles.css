@@ -160,7 +160,9 @@ body {
   background-position: center;
   color: white;
   text-align: center;
-  padding: 120px 20px;
+  /* Minska höjden på hero-sektionen så att kategorikorten hamnar närmare toppen
+     och användaren kan se dem utan att scrolla. */
+  padding: 60px 20px;
   position: relative;
 }
 
@@ -867,6 +869,23 @@ body {
 }
 .account-box button:hover {
   background-color: #be123c;
+}
+
+/* Länkar under formulären på kontosidan */
+.secondary-links {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+.secondary-links a {
+  color: var(--accent);
+  text-decoration: none;
+  margin-right: 8px;
+}
+.secondary-links a:last-child {
+  margin-right: 0;
+}
+.secondary-links a:hover {
+  text-decoration: underline;
 }
 .account-page button {
   padding: 8px;
