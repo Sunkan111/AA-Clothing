@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = getQueryParams();
   const categoryTitle = document.getElementById('categoryTitle');
   const productList = document.getElementById('productList');
-  const brandFilter = document.getElementById('brandFilter');
+  // Varumärkefilter tas bort eftersom endast ett varumärke säljs
+  const brandFilter = null;
   const sizeFilter = document.getElementById('sizeFilter');
   const colorFilter = document.getElementById('colorFilter');
   const priceFilter = document.getElementById('priceFilter');
@@ -40,19 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Populera filteralternativ (varumärken, storlekar, färger)
-  const brands = new Set();
+  // Skapa mängder för storlekar och färger (varumärke hoppas över)
+  // const brands = new Set();
   const sizes = new Set();
   const colors = new Set();
   filtered.forEach((p) => {
-    brands.add(p.brand);
     p.sizes.forEach((s) => sizes.add(s));
     p.colors.forEach((c) => colors.add(c));
-  });
-  brands.forEach((b) => {
-    const option = document.createElement('option');
-    option.value = b;
-    option.textContent = b;
-    brandFilter.appendChild(option);
   });
   sizes.forEach((s) => {
     const option = document.createElement('option');
@@ -70,9 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function applyFilters() {
     let results = [...filtered];
     // Gather selected values from multi‑select filters
-    const selectedBrands = Array.from(brandFilter.selectedOptions)
-      .map((opt) => opt.value)
-      .filter((v) => v);
     const selectedSizes = Array.from(sizeFilter.selectedOptions)
       .map((opt) => opt.value)
       .filter((v) => v);
@@ -80,11 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .map((opt) => opt.value)
       .filter((v) => v);
     const maxPrice = priceFilter.value;
-
-    // Filter by brand if any selected
-    if (selectedBrands.length > 0) {
-      results = results.filter((p) => selectedBrands.includes(p.brand));
-    }
     // Filter by size (product has at least one selected size)
     if (selectedSizes.length > 0) {
       results = results.filter((p) =>
@@ -231,7 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Eventlyssnare för filter och sortering
-  brandFilter.addEventListener('change', applyFilters);
   sizeFilter.addEventListener('change', applyFilters);
   colorFilter.addEventListener('change', applyFilters);
   priceFilter.addEventListener('input', applyFilters);
