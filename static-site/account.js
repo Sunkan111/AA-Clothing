@@ -55,6 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const msg = document.getElementById('loginMessage');
         if (user) {
           saveCurrentUser({ name: user.name, email: user.email });
+          // If a redirect target was set (e.g. checkout), navigate there after login
+          const redirectTo = localStorage.getItem('redirectTo');
+          if (redirectTo) {
+            localStorage.removeItem('redirectTo');
+            window.location.href = redirectTo;
+            return;
+          }
           renderAccount();
         } else {
           msg.textContent = 'Fel e-post eller lösenord.';
@@ -82,6 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
         users.push({ name, email, password });
         saveUsers(users);
         saveCurrentUser({ name, email });
+        // handle redirect after successful registration
+        const redirectToReg = localStorage.getItem('redirectTo');
+        if (redirectToReg) {
+          localStorage.removeItem('redirectTo');
+          window.location.href = redirectToReg;
+          return;
+        }
         renderAccount();
       });
   }

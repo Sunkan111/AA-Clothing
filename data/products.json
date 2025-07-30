@@ -457,30 +457,30 @@
     "size": ["S","M","L","XL"],
     "color": "Svart",
     "category": "herr",
-    "image": "/f24b4694-71c5-4132-bd67-e1a79b4a6e1c.png",
-    "description": "Klassisk svart T-shirt med AA Studios-logotyp.",
-    "fit": "regular"
+    "image": "/male_black_loosefit_AA_logo.png",
+    "description": "Klassisk svart T-shirt med A&A Studios-logotyp.",
+    "fit": "loose"
   },
   {
-    "id": "dam-logo-red",
-    "name": "AA Studios T-shirt (Röd)",
+    "id": "dam-logo-black",
+    "name": "A&A Studios T-shirt (Svart)",
     "price": 299,
     "size": ["XS","S","M","L"],
-    "color": "Röd",
+    "color": "Svart",
     "category": "dam",
-    "image": "/304cdecb-bc0d-4143-b426-759f2c4ba608.png",
-    "description": "Trendig röd T-shirt med AA Studios-logotyp.",
-    "fit": "regular"
+    "image": "/female_black_slimfit_AA_logo.png",
+    "description": "Slim fit svart T-shirt med A&A Studios‑logotyp.",
+    "fit": "slim"
   },
   {
-    "id": "barn-logo-navy",
-    "name": "AA Studios T-shirt Barn (Marinblå)",
+    "id": "barn-bike-white",
+    "name": "A&A Studios Cykel T-shirt Barn (Vit/Grön)",
     "price": 199,
     "size": ["XS","S","M","L"],
-    "color": "Marinblå",
+    "color": "Vit/Grön",
     "category": "barn",
-    "image": "/6d567085-a501-4d49-841b-872b596a706f.png",
-    "description": "Marinblå AA Studios barn‑T-shirt.",
+    "image": "/child_white_bicycle.png",
+    "description": "Vit barn‑T-shirt med grön cykelmotiv.",
     "fit": "regular"
   },
   {
@@ -496,24 +496,24 @@
   },
   {
     "id": "dam-bike-lightgreen",
-    "name": "AA Studios Cykel T-shirt (Ljusgrön)",
+    "name": "A&A Studios Cykel T-shirt (Vit/Grön)",
     "price": 299,
     "size": ["XS","S","M","L"],
-    "color": "Ljusgrön",
+    "color": "Vit/Grön",
     "category": "dam",
-    "image": "/c2f3fd51-d88e-4d16-b113-8ab44178a06f.png",
-    "description": "Ljusgrön T-shirt med cykel och blommotiv.",
-    "fit": "regular"
+    "image": "/female_white_slimfit_bicycle.png",
+    "description": "Vit T-shirt med grön AA‑logga och cykelmotiv med blommor.",
+    "fit": "slim"
   },
   {
     "id": "barn-bike-pink",
-    "name": "AA Studios Cykel T-shirt Barn (Rosa)",
+    "name": "A&A Studios Cykel T-shirt Barn (Vit/Grön)",
     "price": 199,
     "size": ["XS","S","M","L"],
-    "color": "Rosa",
+    "color": "Vit/Grön",
     "category": "barn",
-    "image": "/d3588507-bc0c-4217-9f51-8ff8f795c728.png",
-    "description": "Rosa barn‑T-shirt med cykel och blommotiv.",
+    "image": "/child_white_bicycle.png",
+    "description": "Vit barn‑T-shirt med grön cykel och blommotiv.",
     "fit": "regular"
   },
   {
@@ -523,9 +523,9 @@
     "size": ["S","M","L","XL"],
     "color": "Vit",
     "category": "herr",
-    "image": "/dbd17a4e-88b5-4750-846a-8299b992a388.png",
-    "description": "Vit T-shirt med texten \"It's More Than Clothing\".",
-    "fit": "regular"
+    "image": "/male_white_loosefit_morethan.png",
+    "description": "Vit T-shirt med texten \"It’s More Than Clothing\" och A&A Studios.",
+    "fit": "loose"
   },
   {
     "id": "dam-motto-yellow",
@@ -534,9 +534,22 @@
     "size": ["XS","S","M","L"],
     "color": "Gul",
     "category": "dam",
-    "image": "/23901912-cfd1-45cc-9df4-67b956deb194.png",
-    "description": "Gul T-shirt med texten \"It's More Than Clothing\".",
-    "fit": "regular"
+    "image": "/female_yellow_slimfit_morethan.png",
+    "description": "Gul slim fit T-shirt med texten \"It’s More Than Clothing\" och A&A Studios.",
+    "fit": "slim"
+  }
+
+  ,
+  {
+    "id": "herr-tagline-black",
+    "name": "A&A Studios T-shirt med tagline (Svart)",
+    "price": 299,
+    "size": ["S","M","L","XL"],
+    "color": "Svart",
+    "category": "herr",
+    "image": "/male_black_loosefit_tagline.png",
+    "description": "Svart T-shirt med A&A Studios logotyp och tagline.",
+    "fit": "loose"
   }
 
 

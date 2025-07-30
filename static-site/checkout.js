@@ -2,6 +2,17 @@
  * Script för kassa. Hanterar betalningsmetodsspecifik info och beställning.
  */
 document.addEventListener('DOMContentLoaded', () => {
+  // Require user to be logged in before accessing the checkout. If no
+  // currentUser exists in localStorage, save the intended redirect and
+  // send the visitor to the account page. The product catalogue remains
+  // accessible without login.
+  const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+  if (!currentUser) {
+    // store the page we want to come back to
+    localStorage.setItem('redirectTo', 'checkout.html');
+    window.location.href = 'account.html';
+    return;
+  }
   const paymentSelect = document.getElementById('paymentMethod');
   const invoiceInfo = document.getElementById('invoiceInfo');
   const checkoutForm = document.getElementById('checkoutForm');
