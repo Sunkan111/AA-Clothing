@@ -19,7 +19,7 @@ window.PRODUCTS = [
     price: 599,
     sizes: ["S", "M", "L", "XL"],
     colors: ["Svart", "Blå", "Grön", "Röd", "Vit"],
-    images: ["assets/men_hoodie_black.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/men_hoodie_black.png"],
     description:
       "Mjuk hoodie i lös passform med A&A‑logga på bröstet. Perfekt för vardag och avslappnade dagar.",
     material: "80% bomull, 20% polyester",
@@ -36,7 +36,7 @@ window.PRODUCTS = [
     price: 799,
     sizes: ["S", "M", "L", "XL"],
     colors: ["Blå", "Svart", "Grön", "Röd", "Vit"],
-    images: ["assets/men_bomber_blue.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/men_bomber_blue.png"],
     description:
       "Klassisk bomberjacka i regular fit med broderad A&A‑logga. Lättviktig men varm.",
     material: "100% polyester",
@@ -53,7 +53,7 @@ window.PRODUCTS = [
     price: 349,
     sizes: ["S", "M", "L", "XL"],
     colors: ["Grön", "Vit", "Svart", "Blå", "Gul"],
-    images: ["assets/men_tshirt_green_bicycle.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/men_tshirt_green_bicycle.png"],
     description:
       "Slim fit T‑shirt med ett retroinspirerat cykeltryck och subtil A&A‑signatur.",
     material: "100% bomull",
@@ -70,7 +70,7 @@ window.PRODUCTS = [
     price: 899,
     sizes: ["40", "41", "42", "43", "44"],
     colors: ["Vit", "Svart", "Grön", "Blå", "Gul"],
-    images: ["assets/men_sneakers_white_green.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/men_sneakers_white_green.png"],
     description:
       "Minimalistiska sneakers i läderimitation med en subtil grön A&A‑logga på sidan.",
     material: "Syntetisk läder, gummisula",
@@ -87,7 +87,7 @@ window.PRODUCTS = [
     price: 249,
     sizes: ["One Size"],
     colors: ["Svart", "Blå", "Grön", "Röd", "Gul"],
-    images: ["assets/men_cap_black.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/men_cap_black.png"],
     description:
       "Klassisk basebollkeps med broderad A&A‑logga på framsidan. Justerbar passform.",
     material: "100% bomull",
@@ -104,7 +104,7 @@ window.PRODUCTS = [
     price: 349,
     sizes: ["XS", "S", "M", "L"],
     colors: ["Vit", "Grön", "Gul", "Svart", "Blå"],
-    images: ["assets/women_tshirt_white_bicycle.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/women_tshirt_white_bicycle.png"],
     description:
       "Luftig T‑shirt med grön cykeldesign och A&A‑signatur. Perfekt för sommardagar.",
     material: "100% bomull",
@@ -121,7 +121,7 @@ window.PRODUCTS = [
     price: 299,
     sizes: ["XS", "S", "M", "L"],
     colors: ["Rosa", "Svart", "Grå", "Blå", "Vit"],
-    images: ["assets/women_leggings_pink.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/women_leggings_pink.png"],
     description:
       "Fukttransporterande träningstights med diskret A&A‑logga vid midjan. Bekväm slim fit.",
     material: "75% nylon, 25% elastan",
@@ -138,7 +138,7 @@ window.PRODUCTS = [
     price: 899,
     sizes: ["36", "37", "38", "39", "40", "41"],
     colors: ["Vit/Rosa", "Vit/Grön", "Svart", "Gul", "Blå"],
-    images: ["assets/women_sneakers_white_pink.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/women_sneakers_white_pink.png"],
     description:
       "Fräscha vita sneakers med rosa detaljer och A&A‑logga. Ger både stil och komfort.",
     material: "Syntetisk läder, gummisula",
@@ -155,7 +155,7 @@ window.PRODUCTS = [
     price: 199,
     sizes: ["One Size"],
     colors: ["Vit", "Grön", "Svart", "Blå", "Gul"],
-    images: ["assets/women_tote_white_green.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/women_tote_white_green.png"],
     description:
       "Praktisk tygkasse i kraftig bomull med grön A&A‑logga. Perfekt till shopping eller stranden.",
     material: "100% bomull",
@@ -172,7 +172,7 @@ window.PRODUCTS = [
     price: 299,
     sizes: ["XS", "S", "M", "L"],
     colors: ["Gul", "Svart", "Vit", "Rosa", "Blå"],
-    images: ["assets/women_crop_yellow_tagline.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/women_crop_yellow_tagline.png"],
     description:
       "Kort topp med texten ‘It’s more than clothing’ och A&A‑logga. Trendig och bekväm.",
     material: "95% bomull, 5% elastan",
@@ -189,7 +189,7 @@ window.PRODUCTS = [
     price: 299,
     sizes: ["98", "104", "110", "116"],
     colors: ["Vit", "Grön", "Gul", "Rosa", "Blå"],
-    images: ["assets/kids_tshirt_white_bicycle.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/kids_tshirt_white_bicycle.png"],
     description:
       "Barn‑T‑shirt med gullig cykeldesign och A&A‑logga. Tillverkad i mjuk bomull för känslig hud.",
     material: "100% bomull",
@@ -206,7 +206,7 @@ window.PRODUCTS = [
     price: 199,
     sizes: ["One Size"],
     colors: ["Blå", "Röd", "Grön", "Svart", "Vit"],
-    images: ["assets/kids_cap_blue.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/kids_cap_blue.png"],
     description:
       "Barnkeps i lätt bomull med A&A‑logga. Justerbar rem för perfekt passform.",
     material: "100% bomull",
@@ -223,7 +223,7 @@ window.PRODUCTS = [
     price: 349,
     sizes: ["One Size"],
     colors: ["Grön", "Blå", "Röd", "Svart", "Gul"],
-    images: ["assets/kids_backpack_green.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/kids_backpack_green.png"],
     description:
       "Robust barnryggsäck med rymliga fack och A&A‑logga. Perfekt för skolan eller utflykten.",
     material: "100% polyester",
@@ -240,7 +240,7 @@ window.PRODUCTS = [
     price: 499,
     sizes: ["30", "31", "32", "33", "34"],
     colors: ["Rosa", "Vit", "Blå", "Grön", "Gul"],
-    images: ["assets/kids_sneakers_pink.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/kids_sneakers_pink.png"],
     description:
       "Lekfulla sneakers för barn med färgglada detaljer och A&A‑logga på sidan.",
     material: "Syntetisk läder, gummisula",
@@ -257,7 +257,7 @@ window.PRODUCTS = [
     price: 399,
     sizes: ["98", "104", "110", "116"],
     colors: ["Grå", "Vit", "Svart", "Blå", "Grön"],
-    images: ["assets/kids_sweatshirt_grey.png"],
+    images: ["https://raw.githubusercontent.com/Sunkan111/AA-Clothing/main/static-site/assets/kids_sweatshirt_grey.png"],
     description:
       "Mysig sweatshirt i bomull med A&A‑logga. Perfekt för lek och vardag.",
     material: "80% bomull, 20% polyester",
