@@ -1,0 +1,4 @@
+// This directory stores static images for products and category cards used in the
+// static version of the AA Clothing site. It intentionally contains a
+// placeholder file so that git tracks the folder even if no images are
+// present by default.

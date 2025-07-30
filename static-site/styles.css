@@ -241,20 +241,26 @@ body {
   background-position: center;
 }
 
+/*
+ * Anpassade bakgrundsbilder för startsidans kategorikort. Vi använder lokala
+ * bilder som ligger i static-site/assets istället för externa Unsplash-bilder.
+ * Varje kategori visar en passande produkt från sortimentet.
+ */
+
 #img-new {
-  background-image: url('https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=600&q=80');
+  background-image: url('assets/women_crop_yellow_tagline.png');
 }
 
 #img-bestsellers {
-  background-image: url('https://images.unsplash.com/photo-1530133532239-1a4b1c57f901?auto=format&fit=crop&w=600&q=80');
+  background-image: url('assets/men_sneakers_white_green.png');
 }
 
 #img-sport {
-  background-image: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80');
+  background-image: url('assets/women_leggings_pink.png');
 }
 
 #img-outlet {
-  background-image: url('https://images.unsplash.com/photo-1520975869010-13336ccb6f53?auto=format&fit=crop&w=600&q=80');
+  background-image: url('assets/women_tote_white_green.png');
 }
 
 .category-card span {
