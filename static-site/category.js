@@ -64,13 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function applyFilters() {
     let results = [...filtered];
-    // Gather selected values from multi‑select filters
-    const selectedSizes = Array.from(sizeFilter.selectedOptions)
-      .map((opt) => opt.value)
-      .filter((v) => v);
-    const selectedColors = Array.from(colorFilter.selectedOptions)
-      .map((opt) => opt.value)
-      .filter((v) => v);
+    // Hämta val från dropdowns. Eftersom endast ett värde kan väljas åt gången
+    // returnerar vi en lista med ett element om något är valt, annars en tom lista.
+    const selectedSizes = sizeFilter.value ? [sizeFilter.value] : [];
+    const selectedColors = colorFilter.value ? [colorFilter.value] : [];
     const maxPrice = priceFilter.value;
     // Filter by size (product has at least one selected size)
     if (selectedSizes.length > 0) {

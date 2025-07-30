@@ -72,20 +72,21 @@
         <aside class="filters">
           <h3>Filtrera</h3>
           <!-- Varumärke borttaget eftersom endast AA Studios säljs -->
-          <details class="filter-group">
-            <summary>Storlek</summary>
-            <!-- Endast en storlek kan väljas åt gången; ta bort 'multiple' för dropdown -->
+          <!-- Storlek och färg som traditionella dropdowns istället för nedfällbara <details>
+               för att efterlikna navigationsmenyerna och göra det enklare för användaren att välja
+               ett alternativ. -->
+          <div class="filter-group">
+            <label for="sizeFilter">Storlek</label>
             <select id="sizeFilter">
               <option value="">Alla</option>
             </select>
-          </details>
-          <details class="filter-group">
-            <summary>Färg</summary>
-            <!-- Endast en färg kan väljas åt gången -->
+          </div>
+          <div class="filter-group">
+            <label for="colorFilter">Färg</label>
             <select id="colorFilter">
               <option value="">Alla</option>
             </select>
-          </details>
+          </div>
           <div class="filter-group">
             <label for="priceFilter">Maxpris</label>
             <input type="number" id="priceFilter" placeholder="kr" />
